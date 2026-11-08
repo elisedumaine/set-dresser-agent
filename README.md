@@ -10,9 +10,10 @@ With **Keep path and pond clear** on, the path (4 wide, along Z through the midd
 In Maya: **Windows > General Editors > Script Editor**, **Python** tab. Paste these two lines, change the path to the folder you cloned, and press Ctrl+Enter:
 
 ```python
-import sys; sys.path.insert(0, r"C:\path\to\set-dresser-agent")
+import sys; sys.path.insert(0, r"C:\path\to\set-dresser-agent"); sys.modules.pop("set_dressing_ui", None)
 import set_dressing_ui; set_dressing_ui.show()
 ```
+The first line also makes Maya forget any copy of the tool it loaded before, so running the lines again always picks up the files in your clone.
 
 To get a shelf button, select the two lines and middle-mouse drag them onto your shelf.
 

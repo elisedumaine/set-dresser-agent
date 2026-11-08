@@ -122,5 +122,15 @@ sd.clear()
 assert not any(cmds.objExists("|" + g) for g in sd.GROUPS.values())
 assert cmds.objExists("userCube")
 
+# the window always uses the engine next to it, even if another copy was loaded first
+import types
+stale = types.ModuleType("set_dressing")
+stale.__file__ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "old_clone", "set_dressing.py")
+sys.modules["set_dressing"] = stale
+sys.modules.pop("set_dressing_ui", None)
+import set_dressing_ui
+assert hasattr(set_dressing_ui.set_dressing, "random_seed"), "window picked up a stale engine"
+assert os.path.dirname(os.path.abspath(set_dressing_ui.set_dressing.__file__)) == os.path.dirname(os.path.abspath(__file__))
+
 print("ALL TESTS PASSED")
 maya.standalone.uninitialize()

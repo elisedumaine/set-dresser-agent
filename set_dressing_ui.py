@@ -3,9 +3,23 @@
     import set_dressing_ui
     set_dressing_ui.show()
 """
+import importlib
+import os
+import sys
+
 import maya.cmds as cmds
 
-import set_dressing
+# Always use the engine that sits next to this window. If Maya already loaded
+# another copy of set_dressing (an older clone, another folder), drop it.
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+_old = sys.modules.get("set_dressing")
+if _old and os.path.dirname(os.path.abspath(getattr(_old, "__file__", "") or "")) != HERE:
+    del sys.modules["set_dressing"]
+
+import set_dressing  # noqa: E402
+importlib.reload(set_dressing)
 
 WINDOW = "setDressingWindow"
 COLUMNS = (70, 55, 230)
