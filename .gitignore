@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+# local helpers, not part of the tool
+send_to_maya.py
+test_set_dressing.py

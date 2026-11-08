@@ -29,5 +29,3 @@ To get a shelf button, select the two lines and middle-mouse drag them onto your
 ## Files
 - `set_dressing.py`: the engine. Settings and colours at the top; `is_allowed()` holds all placement rules; one `make_*()` per thing it makes (ground, path, pond, rock, pine, broadleaf); `scatter()`, `clear()`, `random_seed()`.
 - `set_dressing_ui.py`: the window. It only reads its controls and calls the engine.
-- `test_set_dressing.py`: checks the engine without Maya's window: `mayapy test_set_dressing.py`.
-- `send_to_maya.py`: runs Python in an open Maya through a command port on 7001 (developer helper, not needed to use the tool).
