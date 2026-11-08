@@ -8,7 +8,7 @@ Scatters low-poly rocks and trees on a 40x40 ground plane. With **Keep path and 
 In Maya: **Windows > General Editors > Script Editor**, **Python** tab. Paste these two lines, change the path to the folder you cloned, and press Ctrl+Enter:
 
 ```python
-import sys; sys.path.insert(0, r"C:\path\to\maya-set-dressing")
+import sys; sys.path.insert(0, r"C:\path\to\set-dresser-agent")
 import set_dressing_ui; set_dressing_ui.show()
 ```
 
